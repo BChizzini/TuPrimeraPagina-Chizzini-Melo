@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block title %}Buscar — TuPrimeraPagina{% endblock %}
+{% block content %}
+<h1 class="mb-4">Buscar Posts</h1>
+<form class="row g-3 mb-3" method="get" action="/buscar/">
+<div class="col-auto">
+<input type="text" class="form-control" name="q" placeholder="Titulo o contenido" value="{{ query }}">
+</div>
+<div class="col-auto">
+<button class="btn btn-primary" type="submit">Buscar</button>
+</div>
+</form>
+
+
+{% if query and results %}
+<p class="text-muted">Resultados para "{{ query }}":</p>
+<ul class="list-group">
+{% for p in results %}
+<li class="list-group-item">
+<strong>{{ p.title }}</strong><br>
+<small>Autor: {{ p.author }}{% if p.category %} — Categoría: {{ p.category }}{% endif %} — {{ p.created_at|date:'d/m/Y H:i' }}</small>
+<p class="mb-0 mt-1">{{ p.content|truncatechars:180 }}</p>
+</li>
+{% endfor %}
+</ul>
+{% elif query %}
+<div class="alert alert-warning">No se encontraron resultados.</div>
+{% endif %}
+{% endblock %}

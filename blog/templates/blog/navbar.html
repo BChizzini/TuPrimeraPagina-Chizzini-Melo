@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+<div class="container">
+<a class="navbar-brand" href="/">TuPrimeraPagina</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="/posts/nuevo/">Nuevo Post</a></li>
+<li class="nav-item"><a class="nav-link" href="/categorias/nueva/">Nueva Categoría</a></li>
+<li class="nav-item"><a class="nav-link" href="/autores/nuevo/">Nuevo Autor</a></li>
+<li class="nav-item"><a class="nav-link" href="/buscar/">Buscar</a></li>
+</ul>
+<form class="d-flex" role="search" action="/buscar/" method="get">
+<input class="form-control me-2" type="search" placeholder="Buscar..." name="q" value="{{ request.GET.q }}">
+<button class="btn btn-primary" type="submit">Buscar</button>
+</form>
+</div>
+</div>
+</nav>

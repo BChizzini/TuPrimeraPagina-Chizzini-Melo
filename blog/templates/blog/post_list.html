@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% block title %}Inicio — TuPrimeraPagina{% endblock %}
+{% block content %}
+<h1 class="mb-4">Posts recientes</h1>
+{% if posts %}
+<div class="list-group">
+{% for p in posts %}
+<a class="list-group-item list-group-item-action">
+<div class="d-flex w-100 justify-content-between">
+<h5 class="mb-1">{{ p.title }}</h5>
+<small>{{ p.created_at|date:'d/m/Y H:i' }}</small>
+</div>
+<p class="mb-1">{{ p.content|truncatechars:160 }}</p>
+<small>Autor: {{ p.author }}{% if p.category %} — Categoría: {{ p.category }}{% endif %}</small>
+</a>
+{% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">No hay posts todavía. ¡Creá el primero!</div>
+{% endif %}
+{% endblock %}
